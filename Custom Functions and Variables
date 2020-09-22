@@ -1,0 +1,55 @@
+#include <kipr/wombat.h>
+// declare variables
+int pause = 1000;
+int speed = 60;
+int Lmotor = 0;
+int Rmotor = 2;
+//function definitions
+void forward()
+{
+//forward
+    motor(Lmotor,speed);	//motor in port 0 forward
+    motor(Rmotor,speed);	//motor in port 2 forward
+    printf("going forward\n"); //confirmation message
+    msleep(pause);	// turn wheels for one second
+ao(); //all stop
+}
+void reverse()
+{
+//backward
+    msleep(pause);	//pause
+ 	motor(Lmotor,-speed);	//motor in port 0 backward
+    motor(Rmotor,-speed);	//motor in port 2 backward
+	printf("going reverse\n"); //confirmation message
+    msleep(pause);	// turn wheels for one second
+ao(); //all stop
+}
+void right()
+{
+// turn right
+	msleep(pause);	//pause
+    motor(Lmotor,-speed);	//motor in port 0 backward
+    motor(Rmotor,speed);	//motor in port 2 forward
+    printf("going right\n"); //confirmation message
+    msleep(pause);	// turn wheels for one second
+ao(); //all stop
+}
+void left()
+{
+// turn left
+    msleep(pause);	//pause
+    motor(Lmotor,speed);	//motor in port 0 forward
+    motor(Rmotor,-speed);	//motor in port 2 backward
+    printf("going left\n"); //confirmation message
+    msleep(pause);	// turn wheels for one second
+ao(); //all stop
+}
+int main()
+{
+    forward();
+    reverse();
+	  right();
+    left();
+    return 0;
+}
+
